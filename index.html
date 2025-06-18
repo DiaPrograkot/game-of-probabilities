@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космический Кот: Гравитационные Гонки</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<!-- Обновленный HTML для стартового меню -->
+<div id="start-menu" class="screen visible">
+    <!-- Космический фон с планетами -->
+    <div class="space-bg">
+        <div class="planet big-planet"></div>
+        <div class="planet small-planet"></div>
+        <div class="stars-layer"></div>
+        <div class="cosmic-dust"></div>
+    </div>
+    
+    <!-- Главный заголовок -->
+    <div class="main-title">
+        <span class="title-word cosmic">КОСМИЧЕСКИЙ</span>
+        <span class="title-word cat">КОТ</span>
+    </div>
+    
+    <!-- Подзаголовок -->
+    <div class="subtitle">
+        <div class="subtitle-line"></div>
+        <span>Гравитационные гонки</span>
+        <div class="subtitle-line"></div>
+    </div>
+
+    <!-- Контент меню -->
+    <div class="menu-content">
+        <img src="img/cat.png" alt="Космический кот" class="cat-hero">
+        
+        <!-- Кнопки меню -->
+        <div class="menu-buttons">
+            <button id="start-btn" class="menu-btn start-btn">
+                <span class="btn-ico">🚀</span>
+                <span class="btn-text">Начать игру</span>
+                <span class="btn-pulse"></span>
+            </button>
+            
+            <button class="menu-btn">
+                <span class="btn-ico">🎯</span>
+                <span class="btn-text">Миссии</span>
+            </button>
+            
+            <button class="menu-btn">
+                <span class="btn-ico">📖</span>
+                <span class="btn-text">Обучение</span>
+            </button>
+            
+            <button class="menu-btn">
+                <span class="btn-ico">⚙️</span>
+                <span class="btn-text">Настройки</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Эффекты -->
+    <div class="menu-effects">
+        <div class="light-spot"></div>
+        <div class="particles"></div>
+    </div>
+</div>
+
+    <div class="stars" id="stars"></div>
+    <script src="game.js"></script>
+</body>
+</html>
