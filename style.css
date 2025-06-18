@@ -452,7 +452,7 @@ body {
 }
 
 .title-word.cosmic {
-    color: #4cc9f0;
+    color: #72d4f9;
     text-shadow: 
         0 0 1px #4cc9f0,
         0 0 30px #4cc9f0,
@@ -460,11 +460,11 @@ body {
 }
 
 .title-word.cat {
-    color: #ff9966;
+    color: #fec72d;
     text-shadow: 
-        0 0 15px #ff5e62,
-        0 0 30px #ff5e62,
-        0 0 45px #ff5e62;
+        0 0 15px #fd7708,
+        0 0 30px #fd7708,
+        0 0 45px #fd7708;
     transform: translateX(20px);
     animation: text-glitch-cat 8s infinite alternate-reverse;
 }
@@ -514,6 +514,7 @@ body {
 /* Кот-герой */
 .cat-hero {
     position: absolute;
+    bottom: 5%;
     right: 10%;
     width: 450px;
     height: auto;
