@@ -697,3 +697,246 @@ body {
     75% { text-shadow: 0 0 15px #ff5e62, 3px -3px 30px #ff5e62, -3px 3px 45px #ff5e62; }
 }
 
+/* Добавьте в style.css */
+/* Карта уровней */
+#level-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+}
+
+.level-title {
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 2.5rem;
+    color: #72d4f9;
+    text-shadow: 0 0 15px #4cc9f0;
+    margin-bottom: 20px;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+.galaxy-map {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    margin: 30px auto;
+    z-index: 5;
+}
+
+.level-path {
+    position: absolute;
+    width: 96%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.level-planet {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: all 0.5s;
+    z-index: 3;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level-planet:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.level-planet .planet-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #4cc9f0, #4361ee);
+    box-shadow: 0 0 20px #4cc9f0;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.level-planet:hover .planet-circle {
+    box-shadow: 0 0 40px #4cc9f0;
+    transform: scale(1.2);
+}
+
+.level-planet.locked .planet-circle {
+    background: radial-gradient(circle at 30% 30%, #888, #555);
+    box-shadow: 0 0 20px #888;
+}
+
+.level-planet.locked:hover .planet-circle {
+    box-shadow: 0 0 20px #888;
+}
+
+.level-planet.completed .planet-circle {
+    background: radial-gradient(circle at 30% 30%, #fec72d, #fd7708);
+    box-shadow: 0 0 20px #fec72d;
+}
+
+.level-planet.secret .planet-circle {
+    background: radial-gradient(circle at 30% 30%, #f72585, #b5179e);
+    box-shadow: 0 0 20px #f72585;
+}
+
+.level-info {
+    position: absolute;
+    top: 100%;
+    margin-top: 15px;
+    background: rgba(10, 10, 30, 0.9);
+    border: 1px solid #4cc9f0;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+}
+
+.level-planet:hover .level-info {
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.level-info h3 {
+    font-family: 'Bruno Ace SC', sans-serif;
+    font-size: 1.2rem;
+    color: #4cc9f0;
+    margin-bottom: 5px;
+}
+
+.level-info p {
+    font-family: 'Comic Neue', cursive;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.level-lock {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #1a1a2e;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #f72585;
+    font-size: 1.2rem;
+}
+
+.level-planet:not(.locked) .level-lock {
+    display: none;
+}
+
+.map-cat {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    bottom: 10%;
+    left: 10%;
+    z-index: 10;
+    filter: drop-shadow(0 0 10px #4cc9f0);
+    animation: float 6s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.map-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(10, 10, 30, 0.7);
+    border: 2px solid #f72585;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Bruno Ace SC', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.map-btn:hover {
+    background: rgba(247, 37, 133, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.5);
+}
+
+/* Анимация кота-проводника */
+@keyframes cat-move {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(50px) rotate(5deg); }
+    50% { transform: translateX(100px) rotate(0deg); }
+    75% { transform: translateX(50px) rotate(-5deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+/* Заменяем стили для .planet-circle на .level-image */
+.level-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #4cc9f0;
+    box-shadow: 0 0 20px #4cc9f0, 0 0 40px rgba(76, 201, 240, 0.3);
+    position: relative;
+    transition: all 0.4s;
+    filter: saturate(0.8) brightness(1.1);
+}
+
+.level-planet:hover .level-image {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px #4cc9f0, 0 0 60px rgba(76, 201, 240, 0.5);
+    filter: saturate(1.2) brightness(1.2);
+    border-color: #ff9966;
+}
+
+.level-planet.locked .level-image {
+    border-color: #888;
+    box-shadow: 0 0 20px #888;
+    filter: grayscale(80%) brightness(0.7);
+}
+
+.level-planet.completed .level-image {
+    border-color: #fec72d;
+    box-shadow: 0 0 20px #fec72d;
+}
+
+.level-planet.secret .level-image {
+    border-color: #f72585;
+    box-shadow: 0 0 20px #f72585;
+}
+
+/* Добавляем эффект "всплывающей" планеты */
+.level-image::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at center, transparent 40%, rgba(76, 201, 240, 0.2) 100%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.level-planet:hover .level-image::after {
+    opacity: 1;
+}

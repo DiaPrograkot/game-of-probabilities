@@ -1,75 +1,158 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Космический Кот: Гравитационные Гонки</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 
 </head>
-<body>
-<!-- Обновленный HTML для стартового меню -->
-<div id="start-menu" class="screen visible">
-    <!-- Космический фон с планетами -->
-    <div class="space-bg">
-        <div class="planet big-planet"></div>
-        <div class="planet small-planet"></div>
-        <div class="stars-layer"></div>
-        <div class="cosmic-dust"></div>
-    </div>
-    
-    <!-- Главный заголовок -->
-    <div class="main-title">
-        <span class="title-word cosmic">КОСМИЧЕСКИЙ</span>
-        <span class="title-word cat">КОТ</span>
-    </div>
-    
-    <!-- Подзаголовок -->
-    <div class="subtitle">
-        <div class="subtitle-line"></div>
-        <span>Гравитационные гонки</span>
-        <div class="subtitle-line"></div>
-    </div>
 
-    <!-- Контент меню -->
-    <div class="menu-content">
-        <img src="img/cat2.png" alt="Космический кот" class="cat-hero">
-        
-        <!-- Кнопки меню -->
-        <div class="menu-buttons">
-            <button id="start-btn" class="menu-btn start-btn">
-                <span class="btn-ico">🚀</span>
-                <span class="btn-text">Начать игру</span>
-                <span class="btn-pulse"></span>
-            </button>
-            
-            <!-- <button class="menu-btn">
+<body>
+    <!-- Обновленный HTML для стартового меню -->
+    <div id="start-menu" class="screen visible">
+        <!-- Космический фон с планетами -->
+        <div class="space-bg">
+            <div class="planet big-planet"></div>
+            <div class="planet small-planet"></div>
+            <div class="stars-layer"></div>
+            <div class="cosmic-dust"></div>
+        </div>
+
+        <!-- Главный заголовок -->
+        <div class="main-title">
+            <span class="title-word cosmic">КОСМИЧЕСКИЙ</span>
+            <span class="title-word cat">КОТ</span>
+        </div>
+
+        <!-- Подзаголовок -->
+        <div class="subtitle">
+            <div class="subtitle-line"></div>
+            <span>Гравитационные гонки</span>
+            <div class="subtitle-line"></div>
+        </div>
+
+        <!-- Контент меню -->
+        <div class="menu-content">
+            <img src="img/cat2.png" alt="Космический кот" class="cat-hero">
+
+            <!-- Кнопки меню -->
+            <div class="menu-buttons">
+                <button id="start-btn" class="menu-btn start-btn">
+                    <span class="btn-ico">🚀</span>
+                    <span class="btn-text">Начать игру</span>
+                    <span class="btn-pulse"></span>
+                </button>
+
+                <!-- <button class="menu-btn">
                 <span class="btn-ico">🎯</span>
                 <span class="btn-text">Миссии</span>
             </button> -->
-            
-            <button class="menu-btn">
-                <span class="btn-ico">📖</span>
-                <span class="btn-text">Обучение</span>
-            </button>
-            
-            <button class="menu-btn">
-                <span class="btn-ico">⚙️</span>
-                <span class="btn-text">Настройки</span>
-            </button>
+
+                <button class="menu-btn">
+                    <span class="btn-ico">📖</span>
+                    <span class="btn-text">Обучение</span>
+                </button>
+
+                <button class="menu-btn">
+                    <span class="btn-ico">⚙️</span>
+                    <span class="btn-text">Настройки</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Эффекты -->
+        <div class="menu-effects">
+            <div class="light-spot"></div>
+            <div class="particles"></div>
         </div>
     </div>
-    
-    <!-- Эффекты -->
-    <div class="menu-effects">
-        <div class="light-spot"></div>
-        <div class="particles"></div>
-    </div>
-</div>
+    <!-- Добавьте этот код после стартового меню в index.html -->
+    <div id="level-select" class="screen hidden">
+        <!-- Космический фон -->
+        <div class="space-bg">
+            <div class="planet big-planet"></div>
+            <div class="planet small-planet"></div>
+            <div class="stars-layer"></div>
+            <div class="cosmic-dust"></div>
+        </div>
 
+        <!-- Заголовок -->
+        <div class="level-title">
+            <span>Карта Градиентного Пути</span>
+            <div class="title-highlight"></div>
+        </div>
+
+        <!-- Контейнер карты -->
+        <!-- Обновлённый раздел galaxy-map в level-select -->
+        <div class="galaxy-map">
+            <!-- Путь между уровнями (оставляем как было) -->
+            <svg class="level-path" viewBox="0 0 1000 500" preserveAspectRatio="none">
+                <path d="M100,250 C300,150 500,350 700,250 C900,150 1100,350 1300,250" stroke="#4cc9f0" stroke-width="4"
+                    fill="none" stroke-dasharray="10 5" />
+            </svg>
+
+            <!-- Уровни с изображениями -->
+            <div class="level-planet" data-level="1" style="left: 15%; top: 50%">
+                <div class="level-image" style="background-image: url('img/planet1.png')"></div>
+                <div class="level-info">
+                    <h3>Долина Параболы</h3>
+                    <p>Изучи основы градиентного спуска</p>
+                    <div class="level-lock"></div>
+                </div>
+            </div>
+
+            <div class="level-planet locked" data-level="2" style="left: 35%; top: 30%">
+                <div class="level-image" style="background-image: url('img/planet2.png')"></div>
+                <div class="level-info">
+                    <h3>Зигзаг Ущелья</h3>
+                    <p>Побори колебания с Momentum</p>
+                    <div class="level-lock">🔒</div>
+                </div>
+            </div>
+
+            <div class="level-planet locked" data-level="3" style="left: 55%; top: 60%">
+                <div class="level-image" style="background-image: url('img/planet3.png')"></div>
+                <div class="level-info">
+                    <h3>Лабиринт Многомерья</h3>
+                    <p>Много измерений - много проблем!</p>
+                    <div class="level-lock">🔒</div>
+                </div>
+            </div>
+
+            <div class="level-planet locked" data-level="4" style="left: 75%; top: 25%">
+                <div class="level-image" style="background-image: url('img/planet4.png')"></div>
+                <div class="level-info">
+                    <h3>Регрессия Хаоса</h3>
+                    <p>Примени знания к реальным данным</p>
+                    <div class="level-lock">🔒</div>
+                </div>
+            </div>
+
+            <div class="level-planet locked secret" data-level="5" style="left: 90%; top: 70%">
+                <div class="level-image" style="background-image: url('img/planet5.png')"></div>
+                <div class="level-info">
+                    <h3>Тайный Уровень</h3>
+                    <p>Открой новые методы оптимизации</p>
+                    <div class="level-lock">🔒</div>
+                </div>
+            </div>
+        </div>
+        <!-- Кот-проводник -->
+        <img src="img/cat2.png" alt="Космический кот" class="map-cat" id="map-cat">
+
+        <!-- Кнопка назад -->
+        <button id="back-to-menu" class="map-btn">
+            <span class="btn-ico">←</span>
+            <span class="btn-text">В главное меню</span>
+        </button>
+    </div>
     <div class="stars" id="stars"></div>
     <script src="game.js"></script>
 </body>
+
 </html>
