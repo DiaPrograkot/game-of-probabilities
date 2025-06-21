@@ -1,185 +1,147 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Космический Ловец Астероидов | Космический Кот</title>
+    <title>Квантовый Генератор Звёзд | Космический Кот</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="level5.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div id="level5" class="game-screen visible">
         <!-- Космический фон -->
         <div class="space-bg">
-            <div class="planet big-planet"></div>
-            <div class="planet small-planet"></div>
+            <div class="quantum-grid"></div>
             <div class="stars-layer"></div>
             <div class="cosmic-dust"></div>
         </div>
 
         <!-- Заголовок уровня -->
         <div class="level-header">
-            <h1>Космический Ловец Астероидов</h1>
-            <div class="subtitle">Собирай ресурсы, избегай бомб и побеждай!</div>
-        </div>
-        <!-- Кнопки информации -->
-        <div class="info-buttons">
-            <button class="info-btn rules-btn" id="rules-btn">
-                <span class="btn-ico">📖</span>
-                <span class="btn-text">Правила</span>
-            </button>
-            <button class="info-btn probability-btn" id="probability-btn">
-                <span class="btn-ico">📊</span>
-                <span class="btn-text">Вероятности</span>
-            </button>
+            <h1>Квантовый Генератор Звёзд</h1>
+            <div class="subtitle">Открой закон больших чисел!</div>
         </div>
 
-        <!-- Игровая зона -->
-        <div class="game-area">
-            <!-- Кот-помощник -->
-            <div class="cat-helper">
-                <img src="img/cat2.png" alt="Космический кот" class="cat-image">
-                <div class="speech-bubble" id="cat-speech">
-                    Привет, капитан! Собирай ценные астероиды, но остерегайся бомб!
-                </div>
+        <!-- Лаборатория -->
+        <div class="lab-container">
+            <!-- Ускоритель частиц -->
+            <div class="collider">
+                <div class="collider-ring"></div>
+                <div class="collider-center"></div>
+                <div class="particle-beam"></div>
             </div>
+            
+            <!-- Область генерации звёзд -->
+            <div class="star-field" id="star-field"></div>
+        </div>
 
-            <!-- Область с астероидами -->
-            <div class="asteroids-container">
-                <div class="asteroids-row" id="player-asteroids">
-                    <h3>Твои астероиды</h3>
-                    <div class="asteroids-inner" id="player-cards"></div>
-                </div>
-
-                <div class="asteroids-row" id="common-asteroids">
-                    <h3>Общие астероиды</h3>
-                    <div class="asteroids-inner" id="common-cards"></div>
-                </div>
+        <div class="meow">
+            <div class="meow1">
+        <!-- Статистика -->
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-label">Всего звёзд:</div>
+                <div class="stat-value" id="total-stars">0</div>
             </div>
-
-            <!-- Статистика и информация -->
-            <div class="stats-panel">
-                <div class="stats-section">
-                    <h3>Раунд: <span id="round-count">1</span></h3>
-                    <div class="score">Очки: <span id="score">0</span></div>
-                </div>
-                <div class="stats-section">
-                    <h3>Комбинации</h3>
-                    <ul class="combinations-list">
-                        <li>2 одинаковых числа: <span class="points">+10</span></li>
-                        <li>3 одинаковых числа: <span class="points">+30</span></li>
-                        <li>3 одного цвета: <span class="points">+20</span></li>
-                        <li>Золотой астероид: <span class="points">+50</span></li>
-                    </ul>
-                </div>
+            
+            <div class="stat red">
+                <div class="stat-label">Красные гиганты:</div>
+                <div class="stat-value" id="red-stars">0 (0%)</div>
+            </div>
+            
+            <div class="stat blue">
+                <div class="stat-label">Голубые сверхгиганты:</div>
+                <div class="stat-value" id="blue-stars">0 (0%)</div>
+            </div>
+            
+            <div class="stat black">
+                <div class="stat-label">Чёрные дыры:</div>
+                <div class="stat-value" id="black-stars">0 (0%)</div>
             </div>
         </div>
 
-        <!-- Кнопки управления -->
-        <div class="level-controls">
-            <button id="take-asteroid" class="control-btn big-btn">
-                <span class="btn-ico">🪐</span>
-                <span class="btn-text">Взять астероид</span>
+        <!-- График распределения -->
+        <div class="chart-container">
+            <div class="chart-bar red" style="width: 60%">
+                <div class="chart-label">60%</div>
+            </div>
+            <div class="chart-bar blue" style="width: 30%">
+                <div class="chart-label">30%</div>
+            </div>
+            <div class="chart-bar black" style="width: 10%">
+                <div class="chart-label">10%</div>
+            </div>
+            
+            <div class="actual-chart">
+                <div class="actual-bar red" id="actual-red-bar" style="width: 0%"></div>
+                <div class="actual-bar blue" id="actual-blue-bar" style="width: 0%"></div>
+                <div class="actual-bar black" id="actual-black-bar" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Управление -->
+        <div class="controls">
+            <button id="generate-stars" class="control-btn big-btn">
+                <span class="btn-ico">⚛️</span>
+                <span class="btn-text">Запустить ускоритель</span>
             </button>
-            <button id="stop-round" class="control-btn big-btn">
-                <span class="btn-ico">✋</span>
-                <span class="btn-text">Остановиться</span>
+            
+            <button id="reset-lab" class="control-btn">
+                <span class="btn-ico">🔄</span>
+                <span class="btn-text">Сбросить</span>
             </button>
+            
             <button id="back-to-map" class="control-btn">
                 <span class="btn-ico">🗺️</span>
                 <span class="btn-text">На карту</span>
             </button>
         </div>
+</div>
+        <!-- Задания -->
+        <div class="tasks-container">
+            <div class="task active" id="task1">
+                <h3>Задание 1: Первые 20 звёзд</h3>
+                <p>Создай 20 звёзд. Сколько чёрных дыр получилось? Ожидалось 2, но пока может быть 0 или 5 — это нормально!</p>
+                <div class="progress">
+                    <div class="progress-fill" id="progress1" style="width: 0%"></div>
+                    <div class="progress-text">0/20</div>
+                </div>
+            </div>
 
-        <!-- Модальное окно для результатов раунда -->
-        <div class="modal hidden" id="round-result">
-            <div class="modal-content">
-                <h2 id="result-title">Результат раунда</h2>
-                <div class="result-details" id="result-details"></div>
-                <button id="next-round" class="control-btn big-btn">
-                    <span class="btn-ico">🚀</span>
-                    <span class="btn-text">Следующий раунд</span>
-                </button>
+            <div class="task" id="task2">
+                <h3>Задание 2: 100 звёзд</h3>
+                <p>Теперь распределение должно быть ближе к 60/30/10. Проверь!</p>
+                <div class="progress">
+                    <div class="progress-fill" id="progress2" style="width: 0%"></div>
+                    <div class="progress-text">0/100</div>
+                </div>
+            </div>
+
+            <div class="task" id="task3">
+                <h3>Задание 3: Своя гипотеза</h3>
+                <p>Попробуй угадать, сколько чёрных дыр будет после 50 звёзд:</p>
+                <div class="input-container">
+                    <input type="number" id="hypothesis-input" placeholder="Ваш прогноз">
+                    <button class="check-btn" id="check-hypothesis">Проверить</button>
+                </div>
+                <div class="progress">
+                    <div class="progress-fill" id="progress3" style="width: 0%"></div>
+                    <div class="progress-text">0/50</div>
+                </div>
             </div>
         </div>
-
-        <!-- Модальное окно для окончания игры -->
-        <div class="modal hidden" id="game-over">
-            <div class="modal-content">
-                <h2 id="game-result-title">Игра окончена!</h2>
-                <div class="final-score" id="final-score"></div>
-                <button id="back-to-map-final" class="control-btn big-btn">
-                    <span class="btn-ico">🗺️</span>
-                    <span class="btn-text">На карту</span>
-                </button>
+</div>
+        <!-- Кот-помощник -->
+        <div class="cat-helper">
+            <img src="img/cat2.png" alt="Космический кот" class="cat-image">
+            <div class="speech-bubble" id="cat-speech">
+                Привет! Этот ускоритель создаёт звёзды с разной вероятностью. Чем больше звёзд, тем чётче видно закономерность!
             </div>
         </div>
     </div>
-    <!-- Модальное окно с правилами игры -->
-    <div class="rules-modal hidden" id="rules-modal">
-        <div class="rules-content">
-            <button class="close-rules" id="close-rules">×</button>
-            <h2>Правила игры</h2>
-            <ul class="rules-list">
-                <li>Цель игры: собрать как можно больше очков за <span class="highlight">5 раундов</span>, собирая
-                    ценные астероиды и составляя комбинации.</li>
-                <li>В каждом раунде вы можете брать астероиды из колоды, пока не решите остановиться.</li>
-                <li>Будьте осторожны - <span class="highlight">2 бомбы</span> завершают раунд автоматически!</li>
-                <li><span class="highlight">Комбинации:</span>
-                    <ul>
-                        <li>2 одинаковых числа: <span class="highlight">+10 очков</span></li>
-                        <li>3 одинаковых числа: <span class="highlight">+30 очков</span></li>
-                        <li>3 астероида одного цвета: <span class="highlight">+20 очков</span></li>
-                        <li>Золотой астероид: <span class="highlight">+50 очков</span> (автопобеда в раунде)</li>
-                        <li>Каждая бомба: <span class="highlight">-10 очков</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
 
-    <!-- Модальное окно с вероятностями -->
-    <div class="probability-modal hidden" id="probability-modal">
-        <div class="probability-content">
-            <button class="close-probability" id="close-probability">×</button>
-            <h2>Вероятности астероидов</h2>
-            <table class="probability-table">
-                <thead>
-                    <tr>
-                        <th>Тип астероида</th>
-                        <th>Вероятность</th>
-                        <th>Очки</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Обычный астероид (1-10)</td>
-                        <td>80%</td>
-                        <td>Зависит от комбинаций</td>
-                    </tr>
-                    <tr>
-                        <td>Золотой астероид</td>
-                        <td>10%</td>
-                        <td class="highlight">+50</td>
-                    </tr>
-                    <tr>
-                        <td>Бомба</td>
-                        <td>10%</td>
-                        <td class="highlight">-10</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">Цвета обычных астероидов распределены равномерно (по 25% каждый)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
     <script src="level5.js"></script>
 </body>
-
 </html>
