@@ -389,6 +389,7 @@ body {
 }
 
 .big-planet {
+    position: fixed;
     width: 500px;
     height: 500px;
     background: radial-gradient(circle at 30% 30%, #3a0ca3, #1a1a2e);
@@ -401,6 +402,7 @@ body {
 }
 
 .small-planet {
+    position: fixed;
     width: 300px;
     height: 300px;
     background: radial-gradient(circle at 70% 30%, #7209b7, #1a1a2e);
@@ -943,4 +945,233 @@ width: 200px;
 
 .level-planet:hover .level-image::after {
     opacity: 1;
+}
+/* Эффект разблокировки уровня */
+.unlock-effect {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(76, 201, 240, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-family: 'Comic Neue', cursive;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    animation: unlock-pulse 1.5s infinite;
+    z-index: 10;
+}
+
+/* Сообщение кота */
+.cat-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(26, 26, 46, 0.95);
+    color: #ff9966;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #f72585;
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2rem;
+    max-width: 80%;
+    text-align: center;
+    z-index: 100;
+}
+
+/* Анимации */
+@keyframes unlock-pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+
+/* Стили для учебника */
+#tutorial-menu {
+    background: radial-gradient(ellipse at bottom, #0a0a1a 0%, #000033 100%);
+    overflow-y: auto;
+}
+
+.cosmic-title {
+    font-size: 2.8rem;
+    color: #72d4f9;
+    text-shadow: 0 0 15px #4cc9f0, 0 0 30px #4cc9f0;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.cosmic-highlight {
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        #4cc9f0, 
+        #f72585, 
+        #ff9966,
+        transparent);
+    filter: blur(1px);
+    opacity: 0.8;
+}
+
+.tutorial-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 20px;
+}
+
+.cosmic-card {
+    background: rgba(10, 10, 30, 0.7);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 201, 240, 0.3);
+    box-shadow: 0 0 30px rgba(76, 201, 240, 0.2),
+                inset 0 0 20px rgba(76, 201, 240, 0.1);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.cosmic-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+        rgba(76, 201, 240, 0.1) 0%, 
+        transparent 70%);
+    animation: rotate-glow 20s linear infinite;
+    z-index: -1;
+}
+
+.cosmic-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(76, 201, 240, 0.4),
+                inset 0 0 30px rgba(76, 201, 240, 0.2);
+    border-color: #ff9966;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(76, 201, 240, 0.3);
+    padding-bottom: 15px;
+}
+
+.section-header h2 {
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 1.8rem;
+    color: #ff9966;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 153, 102, 0.5);
+}
+
+.section-icon {
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.section-content {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0e0ff;
+}
+
+.cosmic-example {
+    background: rgba(26, 26, 46, 0.5);
+    border-left: 3px solid #4cc9f0;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.cosmic-formula {
+    font-family: 'Courier New', monospace;
+    background: rgba(76, 201, 240, 0.1);
+    border: 1px dashed #4cc9f0;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: #72d4f9;
+    font-size: 1.1rem;
+}
+
+.cosmic-answer {
+    font-weight: bold;
+    color: #fec72d;
+    margin-top: 10px;
+}
+
+.cosmic-answer span {
+    color: #f72585;
+}
+
+.section-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cosmic-tag {
+    background: rgba(114, 9, 183, 0.3);
+    color: #ff9966;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-family: 'Bruno Ace SC', cursive;
+    border: 1px solid #7209b7;
+}
+
+.cosmic-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(247, 37, 133, 0.7);
+    border: 2px solid #ff9966;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Bruno Ace SC', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(247, 37, 133, 0.5);
+}
+
+.cosmic-btn:hover {
+    background: rgba(255, 153, 102, 0.7);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 30px rgba(255, 153, 102, 0.7);
+}
+
+.tutorial-cat {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    filter: drop-shadow(0 0 15px #4cc9f0);
+    animation: float 6s ease-in-out infinite;
+    z-index: 50;
+}
+
+@keyframes rotate-glow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }

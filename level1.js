@@ -71,7 +71,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Назад на карту
     backToMapBtn.addEventListener('click', function() {
-        window.location.href = 'index.html'; // Или другой способ возврата
+// Используем window.opener если открыто из окна, или переходим на index.html с параметром
+if (window.opener) {
+    window.opener.completeLevel(1);
+    window.close();
+} else {
+    window.location.href = 'index.html?completed=1';
+}
     });
     
     // Обработка выбора ответа
@@ -187,12 +193,6 @@ function showTask(index) {
     function completeLevel() {
         // Показать сообщение о завершении уровня
         catSpeech.textContent = 'Поздравляю! Ты завершил уровень "Кубик Галактики"! Теперь ты знаешь основы вероятности!';
-        
-        // Можно добавить анимацию или другие эффекты
-        setTimeout(() => {
-            // Перенаправление на карту или следующее задание
-            window.location.href = 'index.html';
-        }, 3000);
     }
     
     function updateStats(value) {

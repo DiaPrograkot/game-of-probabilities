@@ -45,7 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Назад на карту
     backToMapBtn.addEventListener('click', function() {
-        window.location.href = 'index.html';
+        // Используем window.opener если открыто из окна, или переходим на index.html с параметром
+if (window.opener) {
+    window.opener.completeLevel(2);
+    window.close();
+} else {
+    window.location.href = 'index.html?completed=2';
+}
     });
 
     montyContinueBtn.addEventListener('click', function() {
@@ -354,10 +360,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function completeLevel() {
         gameState = 'completed';
         updateCatSpeech("Поздравляю! Ты завершил уровень 'Монетный Барьер'! Теперь ты знаешь больше о вероятности!");
-        
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 4000);
     }
 
     // Инициализируем игру при загрузке

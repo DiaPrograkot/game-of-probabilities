@@ -328,17 +328,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Завершение уровня
     function completeLevel() {
         catSpeech.textContent = 'Ты доказал: даже в квантовом хаосе есть порядок! Это и есть закон больших чисел.';
-        
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 5000);
     }
     
     // Обработчики событий
     generateBtn.addEventListener('click', generateStars);
     resetBtn.addEventListener('click', resetLab);
     backToMapBtn.addEventListener('click', () => {
-        window.location.href = 'index.html';
+      // Используем window.opener если открыто из окна, или переходим на index.html с параметром
+if (window.opener) {
+    window.opener.completeLevel(5);
+    window.close();
+} else {
+    window.location.href = 'index.html?completed=5';
+}
     });
     checkHypothesisBtn.addEventListener('click', checkHypothesis);
     

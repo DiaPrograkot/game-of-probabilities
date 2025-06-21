@@ -95,7 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     backToMapBtn.addEventListener('click', function() {
-        window.location.href = 'index.html';
+       // Используем window.opener если открыто из окна, или переходим на index.html с параметром
+if (window.opener) {
+    window.opener.completeLevel(4);
+    window.close();
+} else {
+    window.location.href = 'index.html?completed=4';
+}
     });
     
     checkSettingsBtn.addEventListener('click', checkCustomSettings);
@@ -291,12 +297,6 @@ hintBtns.forEach(btn => {
     function completeLevel() {
         // Показать сообщение о завершении уровня
         catSpeech.textContent = 'Поздравляю! Ты завершил уровень "Космический Генератор Планет"! Теперь ты знаешь, как работает вероятность!';
-        
-        // Можно добавить анимацию или другие эффекты
-        setTimeout(() => {
-            // Перенаправление на карту
-            window.location.href = 'index.html';
-        }, 3000);
     }
     
     function checkAchievements() {

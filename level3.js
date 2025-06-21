@@ -368,11 +368,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         catSpeech.textContent = 'Поздравляю! Ты освоил комбинаторику и зависимые события! Теперь ты понимаешь, как меняются вероятности.';
         nextTaskBtn.classList.add('hidden');
-        
-        setTimeout(() => {
-            // Перенаправление на карту
-            window.location.href = 'index.html';
-        }, 3000);
     }
     
     // Обработчики событий
@@ -393,7 +388,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     backToMapBtn.addEventListener('click', function() {
-        window.location.href = 'index.html';
+// Используем window.opener если открыто из окна, или переходим на index.html с параметром
+if (window.opener) {
+    window.opener.completeLevel(3);
+    window.close();
+} else {
+    window.location.href = 'index.html?completed=3';
+}
     });
     
     // Инициализация уровня
