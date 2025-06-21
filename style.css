@@ -748,6 +748,10 @@ body {
     align-items: center;
 }
 
+.coin-image {
+width: 200px;
+}
+
 .level-planet:hover {
     transform: translate(-50%, -50%) scale(1.1);
 }

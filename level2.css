@@ -49,6 +49,7 @@
     flex: 1;
 }
 
+/* Обновленные стили для монетки с картинками */
 .coin-container {
     perspective: 1000px;
     width: 200px;
@@ -73,21 +74,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
     backface-visibility: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
 .coin .heads {
-    background: linear-gradient(to bottom, #fec72d, #fd7708);
     transform: rotateY(0deg);
 }
 
 .coin .tails {
-    background: linear-gradient(to bottom, #4cc9f0, #4361ee);
     transform: rotateY(180deg);
+}
+
+.coin-image {
+    width: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.coin:hover .coin-image {
+    transform: scale(1.05);
 }
 
 .coin.flipping {
