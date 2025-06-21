@@ -78,7 +78,7 @@
     width: 10px;
     height: 100px;
     background: linear-gradient(to bottom, transparent, #4cc9f0, transparent);
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
     transform-origin: center top;
