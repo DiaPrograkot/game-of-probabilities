@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Проверка результата для задания 2
     function checkAfterRedResult(secondIsBlue) {
         if (secondIsBlue) {
-            catSpeech.textContent = 'Ты вытянул синий шарик после красного! Видишь, как изменилась вероятность?';
+            catSpeech.textContent = 'Ты вытянул синий шарик после красного!';
             if (completedTasks <= currentTask) {
                 completedTasks = currentTask + 1;
                 updateProgress();
