@@ -1,0 +1,613 @@
+/* Стили для уровня "Космический Ловец Астероидов" */
+.game-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.level-header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-top: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.level-header h1 {
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 3.5rem;
+    color: #72d4f9;
+    text-shadow: 0 0 15px #4cc9f0;
+    margin-bottom: 10px;
+}
+
+.level-header .subtitle {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.5rem;
+    color: #ff9966;
+    text-shadow: 0 0 10px #ff5e62;
+    margin-bottom: 60px;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 30px auto;
+    max-width: 1200px;
+    position: relative;
+    z-index: 5;
+    gap: 20px;
+}
+
+/* Кот-помощник */
+.cat-helper {
+    position: relative;
+    width: 300px;
+}
+
+.cat-image {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #4cc9f0);
+    animation: float 6s ease-in-out infinite;
+}
+
+.speech-bubble {
+    position: absolute;
+    top: -80px;
+    left: 160px;
+    width: 250px;
+    padding: 15px;
+    background: rgba(10, 10, 30, 0.9);
+    border: 2px solid #ff9966;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.1rem;
+    box-shadow: 0 0 20px rgba(255, 153, 102, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s;
+    backdrop-filter: blur(5px);
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 30px;
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: #ff9966 transparent;
+}
+
+.speech-bubble.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Контейнер с астероидами */
+.asteroids-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+.asteroids-row {
+    background: rgba(10, 10, 30, 0.7);
+    border: 2px solid #4cc9f0;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.asteroids-row h3 {
+    font-family: 'Bruno Ace SC', cursive;
+    color: #4cc9f0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.asteroids-inner {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 120px;
+}
+
+/* Стили астероидов */
+.asteroid {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-size: cover;
+    background-position: center;
+}
+
+.asteroid::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 70%);
+}
+
+.asteroid:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 0 20px currentColor;
+}
+
+/* Цвета астероидов */
+.asteroid.blue {
+    background-color: #4361ee;
+    color: #a5d8ff;
+    border: 2px solid #a5d8ff;
+}
+
+.asteroid.red {
+    background-color: #f72585;
+    color: #ffccd5;
+    border: 2px solid #ffccd5;
+}
+
+.asteroid.green {
+    background-color: #4cc9f0;
+    color: #caf0f8;
+    border: 2px solid #caf0f8;
+}
+
+.asteroid.yellow {
+    background-color: #fec72d;
+    color: #fff3b0;
+    border: 2px solid #fff3b0;
+}
+
+.asteroid.gold {
+    background: radial-gradient(circle at center, #ffd700, #daa520);
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 0 20px gold;
+}
+
+.asteroid.bomb {
+    background: radial-gradient(circle at center, #555, #222);
+    color: #fff;
+    border: 2px solid #ff5e62;
+    box-shadow: 0 0 20px #ff5e62;
+}
+
+/* Панель статистики */
+.stats-panel {
+    background: rgba(10, 10, 30, 0.7);
+    border: 2px solid #ff9966;
+    border-radius: 15px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 0 20px rgba(255, 153, 102, 0.3);
+    backdrop-filter: blur(5px);
+    color: white;
+    font-family: 'Comic Neue', cursive;
+}
+
+.stats-section {
+    margin-bottom: 20px;
+}
+
+.stats-section h3 {
+    color: #4cc9f0;
+    font-family: 'Bruno Ace SC', cursive;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.score {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fec72d;
+    text-align: center;
+}
+
+.combinations-list {
+    list-style-type: none;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.combinations-list .points {
+    color: #fec72d;
+    font-weight: bold;
+}
+
+/* Кнопки управления */
+.level-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    position: relative;
+    z-index: 10;
+}
+
+.control-btn {
+    background: rgba(76, 201, 240, 0.2);
+    border: 2px solid #4cc9f0;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-family: 'Bruno Ace SC', sans-serif;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-btn:hover {
+    background: rgba(76, 201, 240, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+}
+
+.control-btn.big-btn {
+    padding: 15px 30px;
+    font-size: 1.3rem;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Модальные окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.modal.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 2px solid #4cc9f0;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(76, 201, 240, 0.5);
+    position: relative;
+    animation: modal-appear 0.5s;
+}
+
+.modal-content h2 {
+    font-family: 'Bruno Ace SC', cursive;
+    color: #4cc9f0;
+    margin-bottom: 20px;
+}
+
+.result-details {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.final-score {
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 2rem;
+    color: #fec72d;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(254, 199, 45, 0.5);
+}
+
+/* Анимации */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes modal-appear {
+    from { transform: translateY(50px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes asteroid-catch {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.asteroid-caught {
+    animation: asteroid-catch 0.5s;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .game-area {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .asteroids-container {
+        order: 1;
+        width: 100%;
+    }
+    
+    .cat-helper {
+        order: 2;
+        margin-top: 20px;
+    }
+    
+    .stats-panel {
+        order: 3;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .level-controls {
+        flex-wrap: wrap;
+    }
+    
+    .control-btn.big-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Добавьте в конец level5.css */
+/* Модальное окно с правилами */
+.rules-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.rules-modal.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.rules-content {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 2px solid #ff9966;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(255, 153, 102, 0.5);
+    position: relative;
+}
+
+.rules-content h2 {
+    font-family: 'Bruno Ace SC', cursive;
+    color: #ff9966;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rules-list {
+    list-style-type: none;
+    margin-bottom: 25px;
+}
+
+.rules-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 153, 102, 0.3);
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.rules-list li:last-child {
+    border-bottom: none;
+}
+
+.rules-list .highlight {
+    color: #fec72d;
+    font-weight: bold;
+}
+
+.close-rules {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #ff9966;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.close-rules:hover {
+    background: rgba(255, 153, 102, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Модальное окно с вероятностями */
+.probability-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.probability-modal.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.probability-content {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 2px solid #4cc9f0;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 30px rgba(76, 201, 240, 0.5);
+    position: relative;
+}
+
+.probability-content h2 {
+    font-family: 'Bruno Ace SC', cursive;
+    color: #4cc9f0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.probability-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Comic Neue', cursive;
+}
+
+.probability-table th, 
+.probability-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(76, 201, 240, 0.3);
+}
+
+.probability-table th {
+    color: #4cc9f0;
+    font-weight: bold;
+}
+
+.probability-table tr:last-child td {
+    border-bottom: none;
+}
+
+.probability-table .highlight {
+    color: #fec72d;
+    font-weight: bold;
+}
+
+.close-probability {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #4cc9f0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.close-probability:hover {
+    background: rgba(76, 201, 240, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Кнопки для открытия модальных окон */
+.info-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 20;
+}
+
+.info-btn {
+    background: rgba(10, 10, 30, 0.7);
+    border: 2px solid #4cc9f0;
+    border-radius: 50px;
+    padding: 8px 15px;
+    font-family: 'Bruno Ace SC', sans-serif;
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.info-btn:hover {
+    background: rgba(76, 201, 240, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+}
+
+.info-btn.probability-btn {
+    border-color: #ff9966;
+}
+
+.info-btn.probability-btn:hover {
+    background: rgba(255, 153, 102, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 153, 102, 0.3);
+}
