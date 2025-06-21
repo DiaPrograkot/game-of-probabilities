@@ -170,3 +170,7 @@ document.getElementById('back-to-menu-from-tutorial').addEventListener('click', 
     document.getElementById('start-menu').classList.remove('hidden');
     document.getElementById('start-menu').classList.add('visible');
 });
+
+document.getElementById('github-btn').addEventListener('click', function() {
+    window.open('https://github.com/DiaPrograkot/game-of-probabilities', '_blank');
+});
